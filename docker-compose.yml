@@ -8,8 +8,6 @@ services:
         ELK_VERSION: $ELK_VERSION
     volumes:
       - type: bind
-            - /srv/dev-disk-by-uuid-f31a3c52-0c5c-4e99-a15d-4285c97f3fcc/docker/nginx/html:/var/www/html
-
         source: /srv/dev-disk-by-uuid-f31a3c52-0c5c-4e99-a15d-4285c97f3fcc/docker/elk/elasticsearch/config/elasticsearch.yml
         target: /usr/share/elasticsearch/config/elasticsearch.yml
         read_only: true
