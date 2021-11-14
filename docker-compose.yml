@@ -8,11 +8,13 @@ services:
         ELK_VERSION: $ELK_VERSION
     volumes:
       - type: bind
-        source: ./elasticsearch/config/elasticsearch.yml
+            - /srv/dev-disk-by-uuid-f31a3c52-0c5c-4e99-a15d-4285c97f3fcc/docker/nginx/html:/var/www/html
+
+        source: /srv/dev-disk-by-uuid-f31a3c52-0c5c-4e99-a15d-4285c97f3fcc/docker/elk/elasticsearch/config/elasticsearch.yml
         target: /usr/share/elasticsearch/config/elasticsearch.yml
         read_only: true
       - type: volume
-        source: ./elasticsearch
+        source: /srv/dev-disk-by-uuid-f31a3c52-0c5c-4e99-a15d-4285c97f3fcc/docker/elk/elasticsearch
         target: /usr/share/elasticsearch/data
     ports:
       - "9200:9200"
@@ -33,11 +35,11 @@ services:
         ELK_VERSION: $ELK_VERSION
     volumes:
       - type: bind
-        source: ./logstash/config/logstash.yml
+        source: /srv/dev-disk-by-uuid-f31a3c52-0c5c-4e99-a15d-4285c97f3fcc/docker/elk/logstash/config/logstash.yml
         target: /usr/share/logstash/config/logstash.yml
         read_only: true
       - type: bind
-        source: ./logstash/pipeline
+        source: /srv/dev-disk-by-uuid-f31a3c52-0c5c-4e99-a15d-4285c97f3fcc/docker/elk/logstash/pipeline
         target: /usr/share/logstash/pipeline
         read_only: true
     ports:
@@ -59,7 +61,7 @@ services:
         ELK_VERSION: $ELK_VERSION
     volumes:
       - type: bind
-        source: ./kibana/config/kibana.yml
+        source: /srv/dev-disk-by-uuid-f31a3c52-0c5c-4e99-a15d-4285c97f3fcc/docker/elk/kibana/config/kibana.yml
         target: /usr/share/kibana/config/kibana.yml
         read_only: true
     ports:
